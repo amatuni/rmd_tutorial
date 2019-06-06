@@ -82,7 +82,7 @@ data = read_csv("data/something.csv")
 ```
  You can do this data loading at any point in the document (except in the header), so you could have loaded all the libraries and data at the very beginning, or wherever.
  
- Now you'll probably want to visualize the data you loaded, which is where ggplot comes in. This is the defacto standard library for plotting in R. You'll notice that at the very beginning of the article we imported a library called "tidyverse". This is where ggplot and a bunch of other really powerful R packages live. If you want to be a data wrangling and visualization wizard, learn tidyverse$\footnote{https://r4ds.had.co.nz/}$
+ Now you'll probably want to visualize the data you loaded, which is where ggplot comes in. This is the defacto standard library for plotting in R. You'll notice that at the very beginning of the article we imported a library called "tidyverse". This is where ggplot and a bunch of other really powerful R packages live. If you want to be a data wrangling and visualization wizard, learn tidyverse$\footnote{\texttt{https://r4ds.had.co.nz/}}$
  
 ```{r weight-and-learning, fig.cap=cap}
 ggplot(data, aes(weight, learning))+
