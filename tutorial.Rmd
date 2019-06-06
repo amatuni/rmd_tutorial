@@ -1,0 +1,120 @@
+---
+title             : "On Gravitation and Learning"
+shorttitle        : "Gravity and Learning"
+
+author: 
+  - name          : "Andrei Amatuni"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "332 Reindeer Lane, North Pole, Arctic Circle"
+    email         : "andrei.amatuni@gmail.com"
+  - name          : "Barack Obama"
+    affiliation   : "1,2"
+
+affiliation:
+  - id            : "1"
+    institution   : "Indiana University"
+  - id            : "2"
+    institution   : "University of Chicago"
+
+authornote: |
+  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+
+  Enter author note here.
+
+abstract: |
+  Here we study the relationship between gravitation and learning in young infants. We demonstrate a significant correspondence between the mass of a learning agent and their ability to learn in a series of novel word learning experiments. This has far reaching consequences for our understanding of development and the nature of intelligence and time.
+  
+keywords          : "word learning, gravity, development, complex systems"
+wordcount         : "X"
+
+bibliography      : ["tutorial.bib"]
+
+floatsintext      : yes
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+library(tidyverse)
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+# Introduction
+
+Here you're gonna want to start talking about what your paper is about and why someone should keep reading beyond the first sentence. You want to make it juicey and intruiguing, but careful, if there's too much juice the reader might drown.
+
+# On the Nature of Time
+
+Now that the reader is fully invested in your work and the questions that it's going to be tackling, you can start getting deep into the weeds and explain things in excruciating detail. If you want to throw some math in the mix, you do that by surrounding LaTex math expressions with \$ signs, where in-line expressions like $2 + 2 = 4$ use only one dollar sign, and if you want an expression to be on it's own line, you surround the expression with two \$ signs, like so: $$\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}$$
+
+You're probably going to want to cite some people so that your reader doesn't feel like you're pulling all this stuff out of nowhere, make them feel like other humans have thought in similar directions and the broader scientific community considered their inquiries worth of publication. To cite someone, you add a @ symbol before the bibtex entry title and surround that in square brackets like so [@sigman2002global]. If you want to cite multiple people at once in one instance, you do the same thing, but separate each paper with a semi-colon like so [@hills2009longitudinal; @hills2010associative; @tenenbaum2005large]. When you leave the square brackets out, then the citation becomes an in-text citation, which is useful if you want the names of the authors to be part of the flow of your prose, like if I want to say that @goodman2008frequency did some cool work and the reader should know about it. 
+
+# Methods
+
+Now that you're past all the initial fluff of the paper, it's time to get down to brass tacks. What did you actually do? Let the reader know what's up.
+
+## Study 1: Measuring the Gravitational Interaction of Learning Bodies
+
+Note that you can create sub-sub-sub-etc headings by adding more and more # signs. For the first study, we weighted different children, and then exposed them to a bunch of word/object pairings, and then tested how many novel words they learned at the end of training.
+
+
+### Results
+
+You're probably going to need to load the actual data that has all your results. You need to do this within R blocks, which you can insert with the shortcut option+command+I on Mac and ctrl+alt+I on Windows
+
+```{r}
+data = read_csv("data/something.csv")
+```
+ You can do this data loading at any point in the document (except in the header), so you could have loaded all the libraries and data at the very beginning, or wherever.
+ 
+ Now you'll probably want to visualize the data you loaded, which is where ggplot comes in. This is the defacto standard library for plotting in R. You'll notice that at the very beginning of the article we imported a library called "tidyverse". This is where ggplot and a bunch of other really powerful R packages live. If you want to be a data wrangling and visualization wizard, learn tidyverse$\footnote{https://r4ds.had.co.nz/}$
+ 
+```{r weight-and-learning, fig.cap=cap}
+ggplot(data, aes(weight, learning))+
+  geom_point()+
+  geom_smooth(method="lm")
+
+cap = "This is where you add the figure caption. You can also add information about the statistics that"
+```
+ 
+To insert a plot that's defined within an R chunk, you'll need to refer to is within your text. So you'll need to say something like, see Figure \@ref(fig:weight-and-learning). By default the papaja package will put these figures at the end, as that's what APA expects, but you can tell it to put the figures within the text by setting the "floatsintext" parameter to "yes". 
+
+Woah. It looks like the more mass that a organism has, the better they learn. Let's look at another plot that groups points by some categorical variable and tiles plots according to this grouping.
+
+```{r tiled-weight, fig.cap=cap}
+ggplot(data, aes(weight, learning))+
+  geom_point()+
+  facet_wrap(~experiment)+
+  geom_smooth(method="lm")
+cap = "This is the same data as in the previous plot, except points have been grouped by what experiment they were in, where experiments are numbered 1-4."
+```
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id = "refs"></div>
+\endgroup

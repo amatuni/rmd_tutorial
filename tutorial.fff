@@ -1,0 +1,7 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{tutorial_files/figure-latex/weight-and-learning-1.pdf}
+\caption{\label{fig:weight-and-learning}This is where you add the figure caption. You can also add information about the statistics that}
+\end{figure*}
